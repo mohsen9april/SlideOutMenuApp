@@ -27,7 +27,6 @@ class HomeViewController: UITableViewController {
         if gesture.state == .changed {
             var x = translation.x
             if isMenuOpened {
-                print(translation.x)
                 x += menuWidth
             }
             x = min(menuWidth , x)
@@ -42,14 +41,24 @@ class HomeViewController: UITableViewController {
     
     fileprivate func handleEnded(gesture : UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
+        let velocity = gesture.velocity(in: view)
         
         if isMenuOpened {
+            // this Section is Related to Close Menu
+            if abs(velocity.x) > 500 {
+                handleHide()
+            }
             if abs(translation.x) < menuWidth / 2 {
                 handleOpen()
             } else {
                 handleHide()
             }
         } else {
+            // this Section is Related to Open Menu
+            if velocity.x > 500 {
+                handleOpen()
+                return
+            }
             if translation.x < menuWidth / 2 {
                 handleHide()
             } else {
