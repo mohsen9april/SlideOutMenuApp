@@ -17,19 +17,32 @@ class HomeViewController: UITableViewController {
     }
     
     let menuController = MenuController()
+    fileprivate var menuWidth : CGFloat = 300
     
     @objc func handleOpen(){
         
-        menuController.view.frame = CGRect(x: 0, y: 0, width: 250, height: view.frame.height)
+        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth , height: view.frame.height)
         let mainView = UIApplication.shared.keyWindow
         mainView?.addSubview(menuController.view)
         addChild(menuController)
+        
+        UIView.animate(withDuration: 0.9 , delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            //Final Position to Animate MenuController
+            self.menuController.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
+        }, completion: nil)
+        
+        
     }
     
     @objc func handleHide(){
+        UIView.animate(withDuration: 0.9 , delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            //Final Position to Animate MenuController
+            self.menuController.view.transform = .identity
+            
+        }, completion: nil)
         
-        menuController.view.removeFromSuperview()
-        menuController.removeFromParent()
+//        menuController.view.removeFromSuperview()
+//        menuController.removeFromParent()
         
     }
 
