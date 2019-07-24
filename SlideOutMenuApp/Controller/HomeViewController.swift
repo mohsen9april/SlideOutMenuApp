@@ -15,10 +15,20 @@ class HomeViewController: UITableViewController {
         tableView.backgroundColor = .red
         setupNavigationItems()
         setupMenuController()
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
-
+        setupDarkCoverView()
+    }
+    
+    let darkCoverView = UIView()
+    fileprivate func setupDarkCoverView(){
+        darkCoverView.alpha = 0
+        darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        darkCoverView.isUserInteractionEnabled = false
+        let mainWindow = UIApplication.shared.keyWindow
+        mainWindow?.addSubview(darkCoverView)
+        darkCoverView.frame = mainWindow?.frame ?? .zero
+        
     }
     
     @objc func handlePan(gesture : UIPanGestureRecognizer){
@@ -29,10 +39,15 @@ class HomeViewController: UITableViewController {
             if isMenuOpened {
                 x += menuWidth
             }
+  
             x = min(menuWidth , x)
             x = max( 0 , x )
             menuController.view.transform = CGAffineTransform(translationX: x, y: 0 )
             self.navigationController?.view.transform = CGAffineTransform(translationX: x, y: 0)
+            darkCoverView.transform = CGAffineTransform(translationX: x, y: 0)
+            
+            darkCoverView.alpha = x / menuWidth
+            
             
         } else if gesture.state == .ended {
             handleEnded(gesture : gesture)
@@ -77,6 +92,11 @@ class HomeViewController: UITableViewController {
             //Final Position to Animate MenuController
             self.menuController.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0 )
             self.navigationController?.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
+            self.darkCoverView.transform  = CGAffineTransform(translationX: self.menuWidth, y: 0 )
+            
+            if self.isMenuOpened {
+                self.darkCoverView.alpha = 1
+            }
  
         }, completion: nil)
     }
@@ -87,7 +107,11 @@ class HomeViewController: UITableViewController {
             //Final Position to Animate MenuController
             self.menuController.view.transform = .identity
             self.navigationController?.view.transform = .identity
+            self.darkCoverView.transform = .identity
             
+            if !self.isMenuOpened {
+                self.darkCoverView.alpha = 0
+            }
         }, completion: nil)
     }
 
