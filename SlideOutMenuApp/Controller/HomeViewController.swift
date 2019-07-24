@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class HomeViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,16 +16,21 @@ class ViewController: UITableViewController {
         setupNavigationItems()
     }
     
+    let menuController = MenuController()
+    
     @objc func handleOpen(){
-        print("Opening Menu...!")
-        let menuController = MenuController()
+        
         menuController.view.frame = CGRect(x: 0, y: 0, width: 250, height: view.frame.height)
         let mainView = UIApplication.shared.keyWindow
         mainView?.addSubview(menuController.view)
+        addChild(menuController)
     }
     
     @objc func handleHide(){
-        print("Hiding Menu...!")
+        
+        menuController.view.removeFromSuperview()
+        menuController.removeFromParent()
+        
     }
 
     fileprivate func setupNavigationItems() {
