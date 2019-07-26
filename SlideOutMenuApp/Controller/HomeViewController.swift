@@ -15,9 +15,11 @@ class HomeViewController: UITableViewController , UIGestureRecognizerDelegate {
         tableView.backgroundColor = .red
         setupNavigationItems()
         setupMenuController()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        panGesture.delegate = self
-        view.addGestureRecognizer(panGesture)
+        
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+//        panGesture.delegate = self
+//        view.addGestureRecognizer(panGesture)
+        
         setupDarkCoverView()
     }
     
@@ -37,56 +39,56 @@ class HomeViewController: UITableViewController , UIGestureRecognizerDelegate {
         
     }
     
-    @objc func handlePan(gesture : UIPanGestureRecognizer){
-        let translation = gesture.translation(in: view)
-        
-        if gesture.state == .changed {
-            var x = translation.x
-            if isMenuOpened {
-                x += menuWidth
-            }
-  
-            x = min(menuWidth , x)
-            x = max( 0 , x )
-            menuController.view.transform = CGAffineTransform(translationX: x, y: 0 )
-            self.navigationController?.view.transform = CGAffineTransform(translationX: x, y: 0)
-            darkCoverView.transform = CGAffineTransform(translationX: x, y: 0)
-            
-            darkCoverView.alpha = x / menuWidth
-            
-            
-        } else if gesture.state == .ended {
-            handleEnded(gesture : gesture)
-        }
-    }
+//    @objc func handlePan(gesture : UIPanGestureRecognizer){
+//        let translation = gesture.translation(in: view)
+//
+//        if gesture.state == .changed {
+//            var x = translation.x
+//            if isMenuOpened {
+//                x += menuWidth
+//            }
+//
+//            x = min(menuWidth , x)
+//            x = max( 0 , x )
+//            menuController.view.transform = CGAffineTransform(translationX: x, y: 0 )
+//            self.navigationController?.view.transform = CGAffineTransform(translationX: x, y: 0)
+//            darkCoverView.transform = CGAffineTransform(translationX: x, y: 0)
+//
+//            darkCoverView.alpha = x / menuWidth
+//
+//
+//        } else if gesture.state == .ended {
+//            handleEnded(gesture : gesture)
+//        }
+//    }
     
-    fileprivate func handleEnded(gesture : UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: view)
-        let velocity = gesture.velocity(in: view)
-        
-        if isMenuOpened {
-            // this Section is Related to Close Menu
-            if abs(velocity.x) > 500 {
-                handleHide()
-            }
-            if abs(translation.x) < menuWidth / 2 {
-                handleOpen()
-            } else {
-                handleHide()
-            }
-        } else {
-            // this Section is Related to Open Menu
-            if velocity.x > 500 {
-                handleOpen()
-                return
-            }
-            if translation.x < menuWidth / 2 {
-                handleHide()
-            } else {
-                handleOpen()
-            }
-        }
-    }
+//    fileprivate func handleEnded(gesture : UIPanGestureRecognizer) {
+//        let translation = gesture.translation(in: view)
+//        let velocity = gesture.velocity(in: view)
+//
+//        if isMenuOpened {
+//            // this Section is Related to Close Menu
+//            if abs(velocity.x) > 500 {
+//                handleHide()
+//            }
+//            if abs(translation.x) < menuWidth / 2 {
+//                handleOpen()
+//            } else {
+//                handleHide()
+//            }
+//        } else {
+//            // this Section is Related to Open Menu
+//            if velocity.x > 500 {
+//                handleOpen()
+//                return
+//            }
+//            if translation.x < menuWidth / 2 {
+//                handleHide()
+//            } else {
+//                handleOpen()
+//            }
+//        }
+//    }
     
     let menuController = MenuController()
     fileprivate var menuWidth : CGFloat = 300
