@@ -64,15 +64,27 @@ class BaseSlidingController: UIViewController {
         
         
         let homeViewController = HomeViewController()
+        let menuController = MenuController()
         let homeView = homeViewController.view!
+        let menuView = menuController.view!
+        homeView.translatesAutoresizingMaskIntoConstraints = false
+        menuView.translatesAutoresizingMaskIntoConstraints = false
         redView.addSubview(homeView)
+        blueView.addSubview(menuView)
         addChild(homeViewController)
+        addChild(menuController)
         NSLayoutConstraint.activate([
-           homeView.topAnchor.constraint(equalTo: redView.topAnchor, constant: 0),
-           homeView.leadingAnchor.constraint(equalTo: redView.leadingAnchor, constant: 0),
-           homeView.trailingAnchor.constraint(equalTo: redView.trailingAnchor, constant: 0),
-           homeView.bottomAnchor.constraint(equalTo: redView.bottomAnchor, constant: 0)
-            ])
+            
+            homeView.topAnchor.constraint(equalTo: redView.topAnchor, constant: 0),
+            homeView.leadingAnchor.constraint(equalTo: redView.leadingAnchor, constant: 0),
+            homeView.trailingAnchor.constraint(equalTo: redView.trailingAnchor, constant: 0),
+            homeView.bottomAnchor.constraint(equalTo: redView.bottomAnchor, constant: 0),
+            
+            menuView.topAnchor.constraint(equalTo: blueView.topAnchor, constant: 0),
+            menuView.leadingAnchor.constraint(equalTo: blueView.leadingAnchor, constant: 0),
+            menuView.trailingAnchor.constraint(equalTo: blueView.trailingAnchor, constant: 0),
+            menuView.bottomAnchor.constraint(equalTo: blueView.bottomAnchor, constant: 0)
 
+            ])
     }
 }
