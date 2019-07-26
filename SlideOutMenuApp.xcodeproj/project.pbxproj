@@ -17,6 +17,7 @@
 		ED89DA0B22EB204A00568A05 /* CustomeMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA0A22EB204A00568A05 /* CustomeMenuHeaderView.swift */; };
 		ED89DA0D22EB266C00568A05 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA0C22EB266C00568A05 /* SpacerView.swift */; };
 		ED89DA0F22EB2C9600568A05 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA0E22EB2C9600568A05 /* ProfileImageView.swift */; };
+		ED89DA1122EB3D0D00568A05 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA1022EB3D0D00568A05 /* MenuItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		ED89DA0A22EB204A00568A05 /* CustomeMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMenuHeaderView.swift; sourceTree = "<group>"; };
 		ED89DA0C22EB266C00568A05 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		ED89DA0E22EB2C9600568A05 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		ED89DA1022EB3D0D00568A05 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				ED81FA7A22E8603E00AB73DE /* HomeViewController.swift */,
 				ED81FA8A22E8787800AB73DE /* MenuController.swift */,
 				ED89DA0A22EB204A00568A05 /* CustomeMenuHeaderView.swift */,
+				ED89DA1022EB3D0D00568A05 /* MenuItemCell.swift */,
 				ED89DA0C22EB266C00568A05 /* SpacerView.swift */,
 				ED89DA0E22EB2C9600568A05 /* ProfileImageView.swift */,
 			);
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED81FA7B22E8603E00AB73DE /* HomeViewController.swift in Sources */,
+				ED89DA1122EB3D0D00568A05 /* MenuItemCell.swift in Sources */,
 				ED89DA0F22EB2C9600568A05 /* ProfileImageView.swift in Sources */,
 				ED81FA8B22E8787800AB73DE /* MenuController.swift in Sources */,
 				ED89DA0D22EB266C00568A05 /* SpacerView.swift in Sources */,
