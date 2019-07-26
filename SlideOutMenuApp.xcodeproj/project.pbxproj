@@ -14,6 +14,8 @@
 		ED81FA8322E8603F00AB73DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED81FA8122E8603F00AB73DE /* LaunchScreen.storyboard */; };
 		ED81FA8B22E8787800AB73DE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED81FA8A22E8787800AB73DE /* MenuController.swift */; };
 		ED89DA0922EAD74E00568A05 /* BaseSlidingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA0822EAD74E00568A05 /* BaseSlidingController.swift */; };
+		ED89DA0B22EB204A00568A05 /* CustomeMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA0A22EB204A00568A05 /* CustomeMenuHeaderView.swift */; };
+		ED89DA0D22EB266C00568A05 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED89DA0C22EB266C00568A05 /* SpacerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		ED81FA8422E8603F00AB73DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED81FA8A22E8787800AB73DE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		ED89DA0822EAD74E00568A05 /* BaseSlidingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingController.swift; sourceTree = "<group>"; };
+		ED89DA0A22EB204A00568A05 /* CustomeMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMenuHeaderView.swift; sourceTree = "<group>"; };
+		ED89DA0C22EB266C00568A05 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				ED89DA0722EAD71E00568A05 /* Base */,
 				ED81FA7A22E8603E00AB73DE /* HomeViewController.swift */,
 				ED81FA8A22E8787800AB73DE /* MenuController.swift */,
+				ED89DA0A22EB204A00568A05 /* CustomeMenuHeaderView.swift */,
+				ED89DA0C22EB266C00568A05 /* SpacerView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,7 +181,9 @@
 			files = (
 				ED81FA7B22E8603E00AB73DE /* HomeViewController.swift in Sources */,
 				ED81FA8B22E8787800AB73DE /* MenuController.swift in Sources */,
+				ED89DA0D22EB266C00568A05 /* SpacerView.swift in Sources */,
 				ED81FA7922E8603E00AB73DE /* AppDelegate.swift in Sources */,
+				ED89DA0B22EB204A00568A05 /* CustomeMenuHeaderView.swift in Sources */,
 				ED89DA0922EAD74E00568A05 /* BaseSlidingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

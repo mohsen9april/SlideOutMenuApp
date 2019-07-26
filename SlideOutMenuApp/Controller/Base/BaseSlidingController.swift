@@ -34,14 +34,41 @@ class BaseSlidingController: UIViewController {
 
     }
     
-    @objc func handlePan(gestrue : UIPanGestureRecognizer){
-        let translation = gestrue.translation(in: view)
+    @objc func handlePan(gesture : UIPanGestureRecognizer){
+        let translation = gesture.translation(in: view)
         print(translation)
         var x = translation.x
+        
+        if isMenuOpen {
+            x += menuWidth
+        }
+        
         x = min(menuWidth , x)
+        x = max( 0 , x )
         redViewLeadingConstraint?.constant = x
+        
+        if gesture.state == .ended {
+            handleEnded(gesture: gesture)
+        }
     }
     
+    fileprivate func handleEnded(gesture : UIPanGestureRecognizer){
+        let translation = gesture.translation(in: view)
+        if translation.x < menuWidth / 2 {
+            redViewLeadingConstraint?.constant = 0
+            isMenuOpen = false
+        } else {
+            redViewLeadingConstraint?.constant = menuWidth
+            isMenuOpen = true
+        }
+        
+        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        
+    }
+    var isMenuOpen = false
     var redViewLeadingConstraint : NSLayoutConstraint?
     let menuWidth: CGFloat = 300
     
@@ -55,7 +82,7 @@ class BaseSlidingController: UIViewController {
             redView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             
             blueView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            blueView.trailingAnchor.constraint(equalTo: redView.leadingAnchor, constant: 0),
+            blueView.trailingAnchor.constraint(equalTo: redView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             blueView.widthAnchor.constraint(equalToConstant: menuWidth),
             blueView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
             ])

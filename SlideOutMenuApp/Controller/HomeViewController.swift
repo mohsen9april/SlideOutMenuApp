@@ -14,7 +14,7 @@ class HomeViewController: UITableViewController , UIGestureRecognizerDelegate {
         super.viewDidLoad()
         tableView.backgroundColor = .red
         setupNavigationItems()
-        setupMenuController()
+//        setupMenuController()
         
 //        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
 //        panGesture.delegate = self
@@ -129,13 +129,13 @@ class HomeViewController: UITableViewController , UIGestureRecognizerDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hide", style: .plain, target: self, action: #selector(handleHide))
     }
     
-    fileprivate func setupMenuController() {
-        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth , height: view.frame.height)
-        let mainView = UIApplication.shared.keyWindow
-        mainView?.addSubview(menuController.view)
-        addChild(menuController)
-    }
-    
+//    fileprivate func setupMenuController() {
+//        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth , height: view.frame.height)
+//        let mainView = UIApplication.shared.keyWindow
+//        mainView?.addSubview(menuController.view)
+//        addChild(menuController)
+//    }
+//
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5

@@ -12,30 +12,27 @@ class MenuController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = .blue
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellId")
-        
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        self.view.addGestureRecognizer(panGesture)
-    }
-    
-    @objc func handlePan(gesture : UIPanGestureRecognizer){
-        let translation = gesture.translation(in: view)
-        let x = translation.x + 300
-        view.transform = CGAffineTransform(translationX: x, y: 0)
+
     }
     
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let customeMenuHeaderView = CustomeMenuHeaderView()
+        //purpleView.backgroundColor = .purple
+        return customeMenuHeaderView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 200
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell(style: .default, reuseIdentifier: "CellId")
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellId", for: indexPath)
         cell.textLabel?.text = "Menu Item Row\(indexPath.row)"
-        cell.backgroundColor = .cyan
         return cell
     }
 }
