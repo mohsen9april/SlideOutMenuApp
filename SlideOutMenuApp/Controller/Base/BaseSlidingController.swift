@@ -23,6 +23,15 @@ class BaseSlidingController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    let darkView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        view.alpha = 0
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +64,7 @@ class BaseSlidingController: UIViewController {
     fileprivate func handleEnded(gesture : UIPanGestureRecognizer){
         let translation = gesture.translation(in: view)
         if translation.x < menuWidth / 2 {
+            
             redViewLeadingConstraint?.constant = 0
             isMenuOpen = false
         } else {
@@ -62,12 +72,42 @@ class BaseSlidingController: UIViewController {
             isMenuOpen = true
         }
         
+        performAnimat()
+
+    }
+    
+    func closeMenu() {
+        redViewLeadingConstraint?.constant = 0
+        isMenuOpen = false
+        performAnimat()
+    }
+    
+    func didSelectMenu(indexPath : IndexPath){
+        print("Selected Menu Item In Menu : \(indexPath.row)")
+        switch indexPath.row {
+        case 0:
+            print("show the home screen")
+        case 1:
+            print("show the list screen ")
+            let listController = ListViewController()
+            redView.addSubview(listController.view)
+        case 2 :
+            print("show the bookmarks screeen")
+            let bookmarkController = UIViewController()
+            bookmarkController.view.backgroundColor = .purple
+            redView.addSubview(bookmarkController.view)
+        default:
+            print("show the moment screeen ")
+        }
+    }
+    
+    fileprivate func performAnimat() {
         UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
-        
-        
+
     }
+
     var isMenuOpen = false
     var redViewLeadingConstraint : NSLayoutConstraint?
     let menuWidth: CGFloat = 300

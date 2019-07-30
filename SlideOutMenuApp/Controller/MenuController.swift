@@ -15,7 +15,7 @@ struct MenuItem {
 
 class MenuController: UITableViewController {
 
-    var menuItems = [MenuItem(icon: #imageLiteral(resourceName: "profile"), title: " Profile"),
+    var menuItems = [MenuItem(icon: #imageLiteral(resourceName: "profile"), title: " Home"),
                      MenuItem(icon: #imageLiteral(resourceName: "lists"), title: " List"),
                      MenuItem(icon: #imageLiteral(resourceName: "profile"), title: " Bookmark"),
                      MenuItem(icon: #imageLiteral(resourceName: "moments"), title: " Moment"),
@@ -45,5 +45,15 @@ class MenuController: UITableViewController {
         cell.titleLabel.text = menuItems[indexPath.row].title
         cell.iconImageView.image = menuItems[indexPath.row].icon
         return cell
+    }
+}
+
+extension MenuController {
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(menuItems[indexPath.row].title)
+        let slidingController = UIApplication.shared.keyWindow?.rootViewController as? BaseSlidingController
+        slidingController?.closeMenu()
+        slidingController?.didSelectMenu(indexPath: indexPath)
     }
 }
